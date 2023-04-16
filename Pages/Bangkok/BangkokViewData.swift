@@ -34,9 +34,14 @@ Notably, the building is constructed entirely out of wood, with wood-carved idol
 The temple houses an internal space of 2,115 m2, with the tallest spire reaching to a staggering 30 metres (98 feet).
 """,
               questions: [
-                .init(question: <#T##String#>,
-                      options: <#T##[String]#>,
-                      correctOption: <#T##Int#>)
+                .init(question: "Something",
+                      options: [
+                        "option 1",
+                        "option 2",
+                        "option 3",
+                        "option 4"
+                      ],
+                      correctOption: 1)
               ]),
         .init(name: "Wat Pa Maha Chedi Kaew (Temple of a Million Bottles)",
               description: """
@@ -49,9 +54,14 @@ The China Daily has said that "The Thai Buddhist temple has found an environment
 friendly way to utilize discarded bottles to reach nirvana (a form of buddhist inner peace)"
 """,
               questions: [
-                .init(question: <#T##String#>,
-                      options: <#T##[String]#>,
-                      correctOption: <#T##Int#>)
+                .init(question: "Something",
+                      options: [
+                        "option 1",
+                        "option 2",
+                        "option 3",
+                        "option 4"
+                      ],
+                      correctOption: 1)
               ]),
         .init(name: "Wat Ban Kung (Temple in a tree)",
               description: """
@@ -66,9 +76,14 @@ Buddha. The Fine Arts Department has registered Wat Bang Kung as a national arch
 site on December 18, 1996.
 """,
               questions: [
-                .init(question: <#T##String#>,
-                      options: <#T##[String]#>,
-                      correctOption: <#T##Int#>)
+                .init(question: "Something",
+                      options: [
+                        "option 1",
+                        "option 2",
+                        "option 3",
+                        "option 4"
+                      ],
+                      correctOption: 1)
               ]),
         .init(name: "Wat Chaiwatthanaram (Temple of Long Reign and Glorious Era)",
               description: """
@@ -77,9 +92,14 @@ Buddhist temple on the west bank of the Chao Phraya River, outside Ayutthaya isl
 Ayutthaya's best known temples and a major tourist attraction.
 """,
               questions: [
-                .init(question: <#T##String#>,
-                      options: <#T##[String]#>,
-                      correctOption: <#T##Int#>)
+                .init(question: "Something",
+                      options: [
+                        "option 1",
+                        "option 2",
+                        "option 3",
+                        "option 4"
+                      ],
+                      correctOption: 1)
               ]),
         .init(name: "White Temple",
               description: """
@@ -90,9 +110,14 @@ memorial to his mother, however Prince Damrong believed it was built to celebrat
 Kingdom's victory over Longvek.
 """,
               questions: [
-                .init(question: <#T##String#>,
-                      options: <#T##[String]#>,
-                      correctOption: <#T##Int#>)
+                .init(question: "Something",
+                      options: [
+                        "option 1",
+                        "option 2",
+                        "option 3",
+                        "option 4"
+                      ],
+                      correctOption: 1)
               ])
     ]
 }
