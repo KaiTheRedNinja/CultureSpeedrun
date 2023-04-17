@@ -14,13 +14,15 @@ struct BangkokView: View {
 
     var nextPage: () -> Void
 
+    @State var showingGuide: Bool = false
+    @State var showResults: Bool = false
+
     @State var temples: [TempleData] = TempleData.temples
     @State var templeIndex: Int = -1
     @State var showTemple: Bool = false
 
     var colors: [Color] = [.blue, .purple, .green, .yellow]
     var shapes: [String] = ["circle", "triangle", "square", "hexagon"]
-    var templeLocations: [CGFloat] = [0.01, 0.2514, 0.568, 0.65, 1]
 
     @State var pathPoint: CGFloat = 0.01
 
@@ -28,45 +30,59 @@ struct BangkokView: View {
         ZStack {
             Color.purple
                 .overlay {
-                    VStack {
-                        Color.green
-                            .frame(width: 500, height: 700)
-                            .overlay {
-                                Image("thailand")
-                                    .resizable()
-                                    .scaledToFit()
-                            }
-                            .overlay(alignment: .topLeading) {
-                                GeometryReader { geom in
-                                    TemplePathShape()
-                                        .stroke(.blue, style: .init(lineWidth: 10))
-                                    Image(systemName: "airplane")
-                                        .resizable()
-                                        .frame(width: 50, height: 50)
-                                        .offset(x: -25, y: -25)
-                                        .modifier(
-                                            FollowEffect(pct: pathPoint,
-                                                         path: TemplePathShape()
-                                                .path(in: .init(origin: .zero,
-                                                                size: geom.size)),
-                                                         rotate: true)
-                                        )
-                                }
-                            }
-                        if templeIndex == -1 {
-                            Button("Open first temple") {
-                                templeIndex += 1
-                                showTemple = true
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .tint(.primary)
-                            .padding(10)
-                        }
-                    }
+                    thailandView
                 }
                 .sheet(isPresented: $showTemple) {
                     templeView
                 }
+            GuideView(showingGuide: $showingGuide,
+                      gameName: "Temple Run",
+                      instructions: """
+Thailand is a largely buddhist country, and as such temples are a large part \
+of the country's culture.
+
+[instructions]
+""")
+        }
+    }
+
+    var thailandView: some View {
+        VStack {
+            Color.green
+                .frame(width: 500, height: 700)
+                .overlay {
+                    Image("thailand")
+                        .resizable()
+                        .scaledToFit()
+                }
+                .overlay(alignment: .topLeading) {
+                    GeometryReader { geom in
+                        TemplePathShape()
+                            .stroke(.blue, style: .init(lineWidth: 10))
+                        Image(systemName: "airplane")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .offset(x: -25, y: -25)
+                            .modifier(
+                                FollowEffect(pct: pathPoint,
+                                             path: TemplePathShape()
+                                    .path(in: .init(origin: .zero,
+                                                    size: geom.size)),
+                                             rotate: true)
+                            )
+                    }
+                }
+            if templeIndex == -1 {
+                Button("Open first temple") {
+                    withAnimation {
+                        templeIndex += 1
+                    }
+                    showTemple = true
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.primary)
+                .padding(10)
+            }
         }
     }
 
@@ -75,9 +91,13 @@ struct BangkokView: View {
         selectedOption = nil
         templeIndex += 1
         // TODO: Animate the movement
+        if templeIndex >= temples.count {
+            showResults = true
+            return
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             withAnimation(.easeInOut(duration: 1.8)) {
-                pathPoint = templeLocations[templeIndex]
+                pathPoint = temples[templeIndex].location
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

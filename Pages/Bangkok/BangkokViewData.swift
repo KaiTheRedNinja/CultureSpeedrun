@@ -21,6 +21,7 @@ import Foundation
 struct TempleData: Identifiable {
     var name: String
     var description: String
+    var location: CGFloat
     var question: MCQuestion
     var id = UUID()
 
@@ -35,6 +36,7 @@ Buddhist and Hindu beliefs.
 Notably, the building is constructed entirely out of wood, with wood-carved idols and sculptures. \
 The temple houses an internal space of 2,115 m2, with the tallest spire reaching to a staggering 30 metres (98 feet).
 """,
+              location: 0.01,
               question: .init(question: "What is the inspiration behind the Sanctuary of Truth's architecture?",
                               options: [
                                 "Greek and Roman Mythology",
@@ -60,6 +62,7 @@ some 20 buildings had been similarly constructed.
 The China Daily has said that "The Thai Buddhist temple has found an environmentally \
 friendly way to utilize discarded bottles to reach nirvana (a form of buddhist inner peace)"
 """,
+              location: 0.2514,
               question: .init(question: "Who was the primary driving force behind the construction of the Temple of a Million Bottles?",
                               options: [
                                 "A Buddhist monk",
@@ -89,6 +92,7 @@ commonly called Luang Phot Bot Noi. Inside the hall, there is a mural that shows
 Buddha. The Fine Arts Department has registered Wat Bang Kung as a national archaeological \
 site on December 18, 1996.
 """,
+              location: 0.568,
               question: .init(question: "What is the most striking feature of Wat Ban Kung?", // TODO: Verify this
                               options: [
                                 "The Buddha Image",
@@ -110,6 +114,7 @@ Located in Ayutthaya, the old capital of Siam (old Thailand), Wat Chaiwatthanara
 Buddhist temple on the west bank of the Chao Phraya River, outside Ayutthaya island. It is one of \
 Ayutthaya's best known temples and a major tourist attraction.
 """,
+              location: 0.65,
               question: .init(question: "What is the significance of the number of smaller prangs surrounding the central prang at Wat Chaiwatthanaram?",
                               options: [
                                 "It represents the 12 animals of the Thai zodiac",
@@ -135,6 +140,7 @@ of long reign and glorious era. It was designed in Khmer style to gain Buddhist 
 memorial to his mother, however Prince Damrong believed it was built to celebrate Ayutthaya \
 Kingdom's victory over Longvek.
 """,
+              location: 1,
               question: .init(question: "What does the bridge leading up to the temple represent?",
                               options: [
                                 "Attaining enlightment",
