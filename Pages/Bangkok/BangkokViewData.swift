@@ -117,7 +117,7 @@ Ayutthaya's best known temples and a major tourist attraction.
                                 "It corresponds to the 16 provinces of Ayutthaya",
                                 "It mirrors the 9 levels of the Buddhist heaven"
                               ],
-                              correctOption: 1,
+                              correctOption: 3,
                               explanation: """
 The number of smaller prangs surrounding the central prang at Wat Chaiwatthanaram corresponds \
 to the 9 levels of the Buddhist heaven. The temple's design is meant to represent Mount Meru, \
