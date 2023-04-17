@@ -31,6 +31,7 @@ struct BangkokView: View {
             Color.purple
                 .overlay {
                     thailandView
+                        .padding(20)
                 }
                 .sheet(isPresented: $showTemple) {
                     templeView
@@ -48,30 +49,37 @@ of the country's culture.
 
     var thailandView: some View {
         VStack {
-            Color.green
-                .frame(width: 500, height: 700)
-                .overlay {
-                    Image("thailand")
-                        .resizable()
-                        .scaledToFit()
+            GeometryReader { geom in
+                ZStack {
+                    Color.purple
+                    Color.purple
+                        .frame(width: 500, height: 700)
+                        .overlay {
+                            Image("thailand")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                        .overlay {
+                            ZStack(alignment: .topLeading) {
+                                TemplePathShape()
+                                    .stroke(.blue, style: .init(lineWidth: 10))
+                                Image(systemName: "airplane")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .offset(x: -25, y: -25)
+                                    .modifier(
+                                        FollowEffect(pct: pathPoint,
+                                                     path: TemplePathShape()
+                                            .path(in: .init(origin: .zero,
+                                                            size: .init(width: 500,
+                                                                        height: 700))),
+                                                     rotate: true)
+                                    )
+                            }
+                        }
+                        .scaleEffect(scaleForThailand(size: geom.size))
                 }
-                .overlay(alignment: .topLeading) {
-                    GeometryReader { geom in
-                        TemplePathShape()
-                            .stroke(.blue, style: .init(lineWidth: 10))
-                        Image(systemName: "airplane")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .offset(x: -25, y: -25)
-                            .modifier(
-                                FollowEffect(pct: pathPoint,
-                                             path: TemplePathShape()
-                                    .path(in: .init(origin: .zero,
-                                                    size: geom.size)),
-                                             rotate: true)
-                            )
-                    }
-                }
+            }
             if templeIndex == -1 {
                 Button("Open first temple") {
                     withAnimation {
@@ -84,6 +92,13 @@ of the country's culture.
                 .padding(10)
             }
         }
+    }
+
+    func scaleForThailand(size: CGSize) -> CGSize {
+        let widthScale = size.width / 500
+        let heightScale = size.height / 700
+        let lowerScale = min(widthScale, heightScale)
+        return CGSize(width: lowerScale, height: lowerScale)
     }
 
     func nextTemple() {
