@@ -18,10 +18,11 @@ import Foundation
  - Wat Chaiwatthanaram (Temple of Long Reign and Glorious Era)
  */
 
-struct TempleData {
+struct TempleData: Identifiable {
     var name: String
     var description: String
     var question: MCQuestion
+    var id = UUID()
 
     static let temples: [TempleData] = [
         .init(name: "Sanctuary of Truth",
