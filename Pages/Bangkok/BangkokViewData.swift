@@ -27,6 +27,7 @@ struct TempleData: Identifiable {
     static let temples: [TempleData] = [
         .init(name: "Sanctuary of Truth",
               description: """
+<image>sanctuary of truth|My sister and I at the Sanctuary of Truth</image>\
 The Sanctuary of Truth (Thai: ปราสาทสัจธรรม) is an unfinished museum in the Pattaya province. \
 The museum structure is a hybrid of a temple and a castle, themed on the Ayutthaya Kingdom and of \
 Buddhist and Hindu beliefs.
@@ -50,6 +51,7 @@ mythology. The temple's design is meant to represent the ancient philosophy of E
               ),
         .init(name: "Wat Pa Maha Chedi Kaew (Temple of a Million Bottles)",
               description: """
+<image>temple of a million bottles|Temple of a million bottles (Wikipedia)</image>\
 Wat Pa Maha Chedi Kaew, also known as the Temple of a Million \
 Bottles, is a Buddhist temple in Khun Han district of Sisaket province, Thailand. \
 The temple is made of over 1.5 million empty Heineken and Chang beer bottles. By 2009,
@@ -76,6 +78,7 @@ a popular attraction and a symbol of sustainable architecture.
               ),
         .init(name: "Wat Ban Kung (Temple in a tree)",
               description: """
+<image>temple in a tree|My sister and I outside and inside the temple in a tree</image>\
 Wat Bang Kung (Thai: วัดบางกุ้ง) is an ancient temple in Samut Songkhram, Thailand. It was \
 built in the Ayutthaya period, and was the site of the Battle of Bang Kung between the \
 Konbaung Dynasty and the Thonburi Kingdom.
@@ -102,6 +105,7 @@ traditional motifs, but the Buddha image is the main attraction for visitors and
               ),
         .init(name: "Wat Chaiwatthanaram (Temple of Long Reign and Glorious Era)",
               description: """
+<image>wat chaiwatthanaram|Wat Chaiwatthanaram, drone view (Wikipedia)</image>\
 Located in Ayutthaya, the old capital of Siam (old Thailand), Wat Chaiwatthanaram (Thai: วัดไชยวัฒนาราม) is a \
 Buddhist temple on the west bank of the Chao Phraya River, outside Ayutthaya island. It is one of \
 Ayutthaya's best known temples and a major tourist attraction.
@@ -124,6 +128,7 @@ that surround Mount Meru in Buddhist mythology.
               ),
         .init(name: "White Temple",
               description: """
+<image>white temple|My sister and I outside the White Temple</image>\
 The temple was constructed in 1630 by the king, Prasat Thong, as the first temple of his reign, \
 as a memorial of his mother's residence in that area. The temple's name literally means the Temple \
 of long reign and glorious era. It was designed in Khmer style to gain Buddhist merit and as a \

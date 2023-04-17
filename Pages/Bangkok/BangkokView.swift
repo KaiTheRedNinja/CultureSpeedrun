@@ -39,9 +39,13 @@ struct BangkokView: View {
     @ViewBuilder
     var templeView: some View {
         let temple = temples[templeIndex]
-        List {
-            Text(temple.name)
-            Text(temple.description)
+        NavigationView {
+            List {
+                Section {
+                    TextImageView(temple.description, imageMaxHeight: 400)
+                }
+            }
+            .navigationTitle(temple.name)
         }
     }
 }
