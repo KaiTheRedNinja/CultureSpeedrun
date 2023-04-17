@@ -59,14 +59,14 @@ struct MazeGridElement: Hashable {
         static let included1: FoodItem = .included(.init(name: "Minced pork", description: """
 Minced pork is the main protein in Vietnamese Bun Cha. The minced pork is typically seasoned with fish \
 sauce, sugar, garlic, and black pepper before being shaped into small meatballs and grilled over charcoal.
-""", icon: "tofu"))
+""", icon: "mincedpork"))
         static let included2: FoodItem = .included(.init(name: "Rice vermicelli", description: """
 Rice vermicelli is a type of thin rice noodle that is commonly used in Vietnamese cuisine, including in dishes like Bun Cha
 """, icon: "vermicelli"))
         static let included3: FoodItem = .included(.init(name: "Fish sauce", description: """
 Fish sauce is a condiment made from fermented fish, salt, and water, that is widely used in Southeast \
 Asian cuisine as a flavor enhancer and dipping sauce.
-""", icon: "tofu"))
+""", icon: "fishsauce"))
         static let included4: FoodItem = .included(.init(name: "Cabbage", description: """
 Cabbage is a leafy vegetable that is low in calories and high in fiber, vitamin C, and vitamin K, \
 and commonly used in salads, stir-fries, and soups.
@@ -78,7 +78,7 @@ as a garnish and source of acidity to balance out savory and spicy flavors.
         static let included6: FoodItem = .included(.init(name: "Green papaya", description: """
 Green papaya is an unripe papaya that is low in calories and high in vitamin C, and commonly used in \
 salads and pickles in Southeast Asian cuisine.
-""", icon: "tofu"))
+""", icon: "papaya"))
         static let included7: FoodItem = .included(.init(name: "Beansprout", description: """
 Beansprouts are vegetable commonly used in Asian cuisine that is low in calories and high in fiber,
 vitamin C, and vitamin K, and adds crunch and freshness to dishes.
@@ -88,18 +88,18 @@ vitamin C, and vitamin K, and adds crunch and freshness to dishes.
         static let excluded1: FoodItem = .excluded(.init(name: "Beef", description: """
 While beef is a common protein in Vietnamese cuisine, it is not typically used in Bun Cha, \
 which traditionally features grilled pork meatballs.
-""", icon: "tofu"))
+""", icon: "beef"))
         static let excluded2: FoodItem = .excluded(.init(name: "Tofu", description: """
 Tofu is not typically used in Bun Cha, as the dish relies on grilled pork meatballs as the main protein.
 """, icon: "tofu"))
         static let excluded3: FoodItem = .excluded(.init(name: "Soya Sauce", description: """
 While soy sauce is a common condiment in Vietnamese cuisine, it is not typically used in \
 Bun Cha, which relies on fish sauce as the main seasoning.
-""", icon: "tofu"))
+""", icon: "soysauce"))
         static let excluded4: FoodItem = .excluded(.init(name: "Potatoes", description: """
 Potatoes are not typically used in Vietnamese Bun Cha, which instead features rice noodles \
 and fresh vegetables like cabbage and beansprouts.
-""", icon: "tofu"))
+""", icon: "potato"))
         static let excluded5: FoodItem = .excluded(.init(name: "Salad", description: """
 While fresh herbs and vegetables like mint and bok choy are commonly used in Bun Cha, a traditional \
 salad is not typically included in the dish.
@@ -107,7 +107,7 @@ salad is not typically included in the dish.
         static let excluded6: FoodItem = .excluded(.init(name: "Chicken", description: """
 While chicken is a common protein in Vietnamese cuisine, it is not typically used in Bun Cha, \
 which traditionally features grilled pork meatballs.
-""", icon: "tofu"))
+""", icon: "chicken"))
         static let excluded7: FoodItem = .excluded(.init(name: "Mushrooms", description: """
 While mushrooms are a common ingredient in many Asian cuisines, they are not typically included \
 in Vietnamese Bun Cha, which instead features fresh herbs and vegetables like mint and beansprouts.
