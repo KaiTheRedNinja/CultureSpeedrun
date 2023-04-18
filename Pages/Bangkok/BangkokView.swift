@@ -40,14 +40,24 @@ struct BangkokView: View {
                 .sheet(isPresented: $showTemple) {
                     templeView
                 }
-            GuideView(showingGuide: $showingGuide,
-                      gameName: "Temple Run",
+            GuideView(showingGuide: .init(get: {
+                showingGuide
+            }, set: { newValue in
+                showingGuide = newValue
+                pauseTime = newValue
+                showTimeAndScore = !newValue
+            }), gameName: "Temple Run",
                       instructions: """
 Thailand is a largely buddhist country, and as such temples are a large part \
 of the country's culture.
 
 [instructions]
 """)
+        }
+        .onChange(of: timeLeft) { _ in
+            if timeLeft == 0 {
+                showResultSheet()
+            }
         }
         .sheet(isPresented: $showResults) {
             results
@@ -203,6 +213,9 @@ of the country's culture.
                     .buttonStyle(.plain)
                 }
             }
+        }
+        .onAppear {
+            pauseTime = false
         }
 
         if let selectedOption {
