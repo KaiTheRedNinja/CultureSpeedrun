@@ -94,6 +94,7 @@ struct ContentView: View {
         case .bangkok:
             BangkokView(timeLeft: $timeLeft,
                         pauseTime: $pauseTime,
+                        showTimeAndScore: $showTimeAndScore,
                         points: $thailandPoints,
                         nextPage: nextPage)
         case .scoresheet:

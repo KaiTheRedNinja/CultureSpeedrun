@@ -10,6 +10,7 @@ import SwiftUI
 struct BangkokView: View {
     @Binding var timeLeft: CGFloat
     @Binding var pauseTime: Bool
+    @Binding var showTimeAndScore: Bool
     @Binding var points: Int
 
     var nextPage: () -> Void
@@ -20,6 +21,9 @@ struct BangkokView: View {
     @State var temples: [TempleData] = TempleData.temples
     @State var templeIndex: Int = -1
     @State var showTemple: Bool = false
+
+    @State var correctQuestions = 0
+    @State var wrongQuestions = 0
 
     var colors: [Color] = [.blue, .purple, .green, .yellow]
     var shapes: [String] = ["circle", "triangle", "square", "hexagon"]
@@ -44,6 +48,9 @@ of the country's culture.
 
 [instructions]
 """)
+        }
+        .sheet(isPresented: $showResults) {
+            results
         }
     }
 
@@ -87,6 +94,7 @@ of the country's culture.
                     }
                     showTemple = true
                 }
+                .disabled(pauseTime)
                 .buttonStyle(.borderedProminent)
                 .tint(.primary)
                 .padding(10)
@@ -155,7 +163,16 @@ of the country's culture.
                         id: \.offset) { (offset, option) in
                     Button {
                         guard selectedOption == nil else { return }
-                        selectedOption = offset
+                        withAnimation {
+                            selectedOption = offset
+                        }
+                        if offset == temple.question.correctOption {
+                            correctQuestions += 1
+                            points += 10
+                        } else {
+                            wrongQuestions += 1
+                            points += 3
+                        }
                     } label: {
                         ZStack {
                             if let selectedOption {
@@ -209,6 +226,45 @@ of the country's culture.
             }
         }
     }
+
+    func showResultSheet() {
+        print("Showing results sheet!")
+
+        showResults = true
+        pauseTime = true
+        showTimeAndScore = false
+
+        points = correctQuestions*10 + wrongQuestions*3 + Int(timeLeft)
+    }
+
+    var results: some View {
+        List {
+            Section("Points") {
+                Text("Correct questions: \(correctQuestions) (+\(correctQuestions*10) points)")
+                    .font(.title2)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Text("Incorrect questions: \(wrongQuestions) (+\(wrongQuestions*3) points)")
+                    .font(.title2)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Text("Time left: \(Int(timeLeft)) (+\(Int(timeLeft)) points)")
+                    .font(.title2)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Text("Total: \(points) points")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+            Section {
+                Text("Backstory here")
+            }
+            Section {
+                Button("Next Game") {
+                    showResults = false
+                    nextPage()
+                }
+            }
+        }
+        .interactiveDismissDisabled()
+    }
 }
 
 struct TemplePathShape: Shape {
@@ -237,6 +293,7 @@ struct BangkokView_Previews: PreviewProvider {
         BangkokView(
             timeLeft: .constant(30),
             pauseTime: .constant(false),
+            showTimeAndScore: .constant(true),
             points: .constant(5),
             nextPage: {}
         )
