@@ -18,8 +18,8 @@ struct ChatItem: Identifiable {
     var id = UUID()
 
     static let openingConversation: [ChatItem] = [
-        .init(sender: .boss, content: "Hello Han Chong, we're offering you a [position name] position in Vietnam."),
-        .init(sender: .family, content: "Thank you for your confidence in me, I’m really looking forward to taking on the role in Xxx"),
+        .init(sender: .boss, content: "Hello Han Chong, we're offering you a senior executive position in Vietnam."),
+        .init(sender: .family, content: "Thank you for your confidence in me, I’m really looking forward to taking on the role."),
         .init(sender: .family, content: "My family, especially my 2 young kids will also enjoy the new country."),
         .init(sender: .family, content: "Since they are so young, it’s easier for them to adapt. I’m also filled will anxiety knowing how tough it can be due to cultural and language differences."),
         .init(sender: .boss, content: "Don't worry, I'm sure you and your family will familiarise yourself with Vietnam well!")

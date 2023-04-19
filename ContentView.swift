@@ -106,10 +106,9 @@ struct ContentView: View {
                          conversation: ChatItem.closingConversation,
                          endText: "Go to scoresheet")
         case .scoresheet:
-            ZStack {
-                Color.blue
-                Text("scoresheet")
-            }
+            ScoresheetView(vietnamPoints: $vietnamPoints,
+                           chinaPoints: $chinaPoints,
+                           thailandPoints: $thailandPoints)
         }
     }
 
