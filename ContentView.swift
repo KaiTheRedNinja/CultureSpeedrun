@@ -3,7 +3,7 @@ import SwiftUI
 let timePerGame = 30.0
 
 enum Page {
-    case start, vietnam, china, bangkok, scoresheet
+    case start, openCutscene, vietnam, china, bangkok, scoresheet
 }
 
 struct ContentView: View {
@@ -79,6 +79,8 @@ struct ContentView: View {
         switch currentPage {
         case .start:
             StartView(nextPage: nextPage)
+        case .openCutscene:
+            OpeningCutsceneView(nextPage: nextPage)
         case .vietnam:
             VietnamView(timeLeft: $timeLeft,
                         pauseTime: $pauseTime,
@@ -107,7 +109,8 @@ struct ContentView: View {
 
     func nextPage() {
         switch currentPage {
-        case .start: switchTo(page: .vietnam)
+        case .start: switchTo(page: .openCutscene)
+        case .openCutscene: switchTo(page: .vietnam)
         case .vietnam: switchTo(page: .china)
         case .china: switchTo(page: .bangkok)
         case .bangkok: switchTo(page: .scoresheet)

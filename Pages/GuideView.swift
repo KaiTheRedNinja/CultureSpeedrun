@@ -113,7 +113,7 @@ struct GuideView: View {
                 .frame(width: 180, height: 300)
                 .zIndex(0)
             }
-            .padding(50)
+            .padding([.top, .bottom, .leading], 50) // not trailing
             .background {
                 Color(red: 0.537, green: 0.812, blue: 0.941)
             }
