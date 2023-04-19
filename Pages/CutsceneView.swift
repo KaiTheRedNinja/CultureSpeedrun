@@ -26,10 +26,10 @@ struct ChatItem: Identifiable {
     ]
 
     static let closingConversation: [ChatItem] = [
-        .init(sender: .boss, content: "How was your journey?"),
-        .init(sender: .family, content: "To spend more time with my family, I have decided to resign."),
-        .init(sender: .boss, content: "We are sad to see you go. Thank you for your time spent with us."),
-        .init(sender: .family, content: "Thank you for the opportunity to visit so many places!"),
+        .init(sender: .boss, content: "How was your journey? I hear you want to resign."),
+        .init(sender: .family, content: "Yes. I have achieved the corporate objectives I was hired for, and I want to spend more time with my family."),
+        .init(sender: .boss, content: "We are sad to see you go. Thank you for your contributions, and enjoy your time with your family!"),
+        .init(sender: .family, content: "Thank you for the opportunity to visit so many places and experience so many cultures!"),
     ]
 }
 
