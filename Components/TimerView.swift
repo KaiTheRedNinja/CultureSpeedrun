@@ -39,6 +39,7 @@ struct TimerView: View {
                 .font(.title)
         }
         .onReceive(timer) { _ in
+            print("Pause time: \(pauseTime)")
             if timeLeft-1 >= 0 && !pauseTime {
                 withAnimation(.linear(duration: 1)) {
                     timeLeft -= 1

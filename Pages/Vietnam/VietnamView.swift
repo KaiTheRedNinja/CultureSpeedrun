@@ -76,13 +76,8 @@ struct VietnamView: View {
                 pauseTime = newValue
                 showTimeAndScore = !newValue
             }),
-                      gameName: "Bun Chua Challenge",
-                      instructions: """
-The player must use their finger to move a bowl of bun cha \
-(Vietnamese noodles with grilled pork) around a maze, collecting \
-herbs and avoiding obstacles.
-To move the bowl, [how to move the bowl].
-""")
+                      gameName: "🇻🇳 Bun Chua Challenge 🍜",
+                      instructions: Guide.vietnam.rawValue)
         }
         .onChange(of: timeLeft) { _ in
             if timeLeft == 0 {
@@ -234,7 +229,7 @@ To move the bowl, [how to move the bowl].
                     .frame(maxWidth: .infinity, alignment: .center)
             }
             Section {
-                Text("Backstory here")
+                TextImageView(Backstory.vietnam.rawValue)
             }
             Section {
                 Button("Next Game") {

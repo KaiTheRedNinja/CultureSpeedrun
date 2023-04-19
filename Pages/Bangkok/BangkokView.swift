@@ -43,6 +43,7 @@ struct BangkokView: View {
             GuideView(showingGuide: .init(get: {
                 showingGuide
             }, set: { newValue in
+                print("Show guide view: \(newValue)")
                 showingGuide = newValue
                 pauseTime = newValue
                 showTimeAndScore = !newValue
@@ -99,10 +100,10 @@ of the country's culture.
             }
             if templeIndex == -1 {
                 Button("Open first temple") {
-                    withAnimation {
-                        templeIndex += 1
-                    }
+                    guard !showResults else { return }
+                    templeIndex += 1
                     showTemple = true
+                    pauseTime = true
                 }
                 .disabled(pauseTime)
                 .buttonStyle(.borderedProminent)
@@ -125,7 +126,7 @@ of the country's culture.
         templeIndex += 1
         // TODO: Animate the movement
         if templeIndex >= temples.count {
-            showResults = true
+            showResultSheet()
             return
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -134,7 +135,9 @@ of the country's culture.
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            guard !showResults else { return }
             showTemple = true
+            pauseTime = true
         }
     }
 
@@ -150,7 +153,7 @@ of the country's culture.
                 }
 
                 Section {
-                    NavigationLink("Quiz") {
+                    NavigationLink("Quiz (The timer will unpause when you click this)") {
                         List {
                             templeQuizView
                         }
@@ -215,6 +218,7 @@ of the country's culture.
             }
         }
         .onAppear {
+            guard !showResults else { return }
             pauseTime = false
         }
 
@@ -243,6 +247,7 @@ of the country's culture.
     func showResultSheet() {
         print("Showing results sheet!")
 
+        showTemple = false
         showResults = true
         pauseTime = true
         showTimeAndScore = false
@@ -267,7 +272,7 @@ of the country's culture.
                     .frame(maxWidth: .infinity, alignment: .center)
             }
             Section {
-                Text("Backstory here")
+                TextImageView(Backstory.thailand.rawValue)
             }
             Section {
                 Button("Next Game") {

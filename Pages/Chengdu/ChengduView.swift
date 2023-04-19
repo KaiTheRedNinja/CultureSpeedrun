@@ -51,14 +51,7 @@ struct ChengduView: View {
                 showingGuide = newValue
                 pauseTime = newValue
                 showTimeAndScore = !newValue
-            }), gameName: "Panda Conservation", instructions: """
-In China, infrastructure development (such as dams, roads, and railways) is increasingly \
-fragmenting and isolating panda populations, preventing pandas from finding new bamboo \
-forests and potential mates. Forest loss also reduces pandas' access to the bamboo they \
-need to survive (https:www.worldwildlife.org/species/giant-panda).
-
-[Instructions]
-""")
+            }), gameName: "Panda Conservation", instructions: Guide.china.rawValue)
         }
         .onChange(of: timeLeft) { _ in
             if timeLeft == 0 {
@@ -117,9 +110,6 @@ need to survive (https:www.worldwildlife.org/species/giant-panda).
                             updateCars(viewHeight: geom.size.height)
                         }
                     }
-//                    .onAppear {
-//                        updateCars(viewHeight: geom.size.height)
-//                    }
             }
         }
         .onTapGesture {
@@ -179,7 +169,7 @@ need to survive (https:www.worldwildlife.org/species/giant-panda).
                     .frame(maxWidth: .infinity, alignment: .center)
             }
             Section {
-                Text("Backstory here")
+                TextImageView(Backstory.china.rawValue)
             }
             Section {
                 Button("Next Game") {
