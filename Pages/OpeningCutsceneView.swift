@@ -16,18 +16,29 @@ struct ChatItem: Identifiable {
     var sender: Sender
     var content: String
     var id = UUID()
-}
 
-struct OpeningCutsceneView: View {
-    var nextPage: () -> Void
-
-    var conversation: [ChatItem] = [
+    static let openingConversation: [ChatItem] = [
         .init(sender: .boss, content: "Hello Han Chong, we're offering you a [position name] position in Vietnam."),
         .init(sender: .family, content: "Thank you for your confidence in me, I’m really looking forward to taking on the role in Xxx"),
         .init(sender: .family, content: "My family, especially my 2 young kids will also enjoy the new country."),
         .init(sender: .family, content: "Since they are so young, it’s easier for them to adapt. I’m also filled will anxiety knowing how tough it can be due to cultural and language differences."),
         .init(sender: .boss, content: "Don't worry, I'm sure you and your family will familiarise yourself with Vietnam well!")
     ]
+
+    static let closingConversation: [ChatItem] = [
+        .init(sender: .boss, content: "How was your journey?"),
+        .init(sender: .family, content: "To spend more time with my family, I have decided to resign."),
+        .init(sender: .boss, content: "We are sad to see you go. Thank you for your time spent with us."),
+        .init(sender: .family, content: "Thank you for the opportunity to visit so many places!"),
+    ]
+}
+
+struct CutsceneView: View {
+    var nextPage: () -> Void
+
+    var conversation: [ChatItem]
+
+    var endText: String
 
     var body: some View {
         ZStack {
@@ -99,7 +110,7 @@ struct OpeningCutsceneView: View {
                     }
                 }
                 Spacer()
-                Button(textNumber >= conversation.count ? "Fly to Vietnam" : "Next") {
+                Button(textNumber >= conversation.count ? endText : "Next") {
                     if textNumber >= conversation.count {
                         nextPage()
                     } else {
@@ -125,6 +136,6 @@ struct OpeningCutsceneView: View {
 
 struct OpeningCutsceneView_Previews: PreviewProvider {
     static var previews: some View {
-        OpeningCutsceneView(nextPage: {})
+        CutsceneView(nextPage: {}, conversation: ChatItem.openingConversation, endText: "Fly to Vietnam")
     }
 }

@@ -3,7 +3,7 @@ import SwiftUI
 let timePerGame = 30.0
 
 enum Page {
-    case start, openCutscene, vietnam, china, bangkok, scoresheet
+    case start, openCutscene, vietnam, china, bangkok, closeCutscene, scoresheet
 }
 
 struct ContentView: View {
@@ -80,7 +80,9 @@ struct ContentView: View {
         case .start:
             StartView(nextPage: nextPage)
         case .openCutscene:
-            OpeningCutsceneView(nextPage: nextPage)
+            CutsceneView(nextPage: nextPage,
+                         conversation: ChatItem.openingConversation,
+                         endText: "Fly to Vietnam")
         case .vietnam:
             VietnamView(timeLeft: $timeLeft,
                         pauseTime: $pauseTime,
@@ -99,6 +101,10 @@ struct ContentView: View {
                         showTimeAndScore: $showTimeAndScore,
                         points: $thailandPoints,
                         nextPage: nextPage)
+        case .closeCutscene:
+            CutsceneView(nextPage: nextPage,
+                         conversation: ChatItem.closingConversation,
+                         endText: "Go to scoresheet")
         case .scoresheet:
             ZStack {
                 Color.blue
@@ -113,7 +119,8 @@ struct ContentView: View {
         case .openCutscene: switchTo(page: .vietnam)
         case .vietnam: switchTo(page: .china)
         case .china: switchTo(page: .bangkok)
-        case .bangkok: switchTo(page: .scoresheet)
+        case .bangkok: switchTo(page: .closeCutscene)
+        case .closeCutscene: switchTo(page: .scoresheet)
         default: break // do nothing for the last page
         }
     }
