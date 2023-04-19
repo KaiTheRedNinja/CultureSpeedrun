@@ -319,9 +319,7 @@ struct VietnamView: View {
             displayedFood = food
             wrongFoods += 1
         }
-        print("Displayed food (main): \(displayedFood)")
         DispatchQueue.main.async {
-            print("Displayed food: \(displayedFood)")
             showFood = true
         }
         obtainedFoods.append(food)

@@ -84,8 +84,7 @@ struct BangkokView: View {
                                                      path: TemplePathShape()
                                             .path(in: .init(origin: .zero,
                                                             size: .init(width: 500,
-                                                                        height: 700))),
-                                                     rotate: true)
+                                                                        height: 700))))
                                     )
                             }
                         }

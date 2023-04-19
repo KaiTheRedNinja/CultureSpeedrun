@@ -7,7 +7,7 @@ enum Page {
 }
 
 struct ContentView: View {
-    @State var currentPage: Page = .bangkok
+    @State var currentPage: Page = .start
     @State var showPlane: Bool = false
     @State var airplaneX: CGFloat = 0
     @State var size: CGSize = .zero
