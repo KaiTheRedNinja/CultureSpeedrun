@@ -51,7 +51,7 @@ struct ChengduView: View {
                 showingGuide = newValue
                 pauseTime = newValue
                 showTimeAndScore = !newValue
-            }), gameName: "Panda Conservation", instructions: Guide.china.rawValue)
+            }), gameName: "🇨🇳 Panda Conservation 🐼", instructions: Guide.china.rawValue)
         }
         .onChange(of: timeLeft) { _ in
             if timeLeft == 0 {

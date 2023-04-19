@@ -75,9 +75,7 @@ struct VietnamView: View {
                 showingGuide = newValue
                 pauseTime = newValue
                 showTimeAndScore = !newValue
-            }),
-                      gameName: "🇻🇳 Bun Chua Challenge 🍜",
-                      instructions: Guide.vietnam.rawValue)
+            }), gameName: "🇻🇳 Bun Chua Challenge 🍜", instructions: Guide.vietnam.rawValue)
         }
         .onChange(of: timeLeft) { _ in
             if timeLeft == 0 {

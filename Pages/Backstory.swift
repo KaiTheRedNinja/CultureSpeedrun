@@ -9,7 +9,7 @@ import Foundation
 
 enum Backstory: String {
     case vietnam = """
-    Congrats!
+    Amazing job collecting those ingredients!
 
     During my family's relatively short stay in Vietnam, we got to experience \
     a lot of the country's culture. As my sister and I were young children back then, \
@@ -17,7 +17,7 @@ enum Backstory: String {
     <image>parents food|My mom and her friends eating at a traditional Vietnamese restaurant.</image>
     """
     case china = """
-    Congrats!
+    Congrats on saving the panda!
 
     Chengdu, China, where my family lived, is famous for its pandas, among other things. However, \
     their habitats have been reduced due to infrastructure projects such as roads and railways. \
@@ -26,16 +26,16 @@ enum Backstory: String {
     creatures should be protected as they're an important part of the region's biodiversity and culture.
     """
     case thailand = """
-    Congrats!
+    Outstanding work on learning about Thai temples!
 
     During my stay in Thailand I stayed quite close to the 4 faced Buddha temple at the Rachaprasong \
-    junction. Visiting a temple in Thailand can be a truly immersive experience. Upon entering a \
+    junction. Visiting temples in Thailand can be a truly immersive experience. Upon entering a \
     temple, ornate buildings, intricate carvings, and colorful statues of Buddha flank the interior. \
     Inside, you can observe monks performing religious rituals, or performers dancing to traditional
     music. \
     <image>me at temple|Me at the 4 faced buddha temple, playing one of the thai traditional instruments</image>\
-    Temples in Thailand are often important cultural landmarks and tourist attractions, and made my \
-    family's time there far easier.
+    Temples in Thailand are often important cultural landmarks and tourist attractions, and made me and my \
+    family's time there far more enriching.
     """
 }
 
@@ -84,7 +84,7 @@ enum Guide: String {
 
     During the duration that the temple information is displayed, the 30 second timer will be \
     paused, and unpaused when you enter the quiz.
-    
+
     Take your time :)
     """
 }

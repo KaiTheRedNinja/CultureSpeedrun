@@ -47,13 +47,7 @@ struct BangkokView: View {
                 showingGuide = newValue
                 pauseTime = newValue
                 showTimeAndScore = !newValue
-            }), gameName: "Temple Run",
-                      instructions: """
-Thailand is a largely buddhist country, and as such temples are a large part \
-of the country's culture.
-
-[instructions]
-""")
+            }), gameName: "🇹🇭 Temple Run 🛕", instructions: Guide.thailand.rawValue)
         }
         .onChange(of: timeLeft) { _ in
             if timeLeft == 0 {
@@ -275,7 +269,7 @@ of the country's culture.
                 TextImageView(Backstory.thailand.rawValue)
             }
             Section {
-                Button("Next Game") {
+                Button("Score sheet") {
                     showResults = false
                     nextPage()
                 }
