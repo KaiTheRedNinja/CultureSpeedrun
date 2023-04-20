@@ -226,7 +226,7 @@ struct VietnamView: View {
                 TextImageView(Backstory.vietnam.rawValue)
             }
             Section {
-                Button("Next Game") {
+                Button("Fly to Chendgu") {
                     showResults = false
                     nextPage()
                 }

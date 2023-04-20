@@ -172,7 +172,7 @@ struct ChengduView: View {
                 TextImageView(Backstory.china.rawValue)
             }
             Section {
-                Button("Next Game") {
+                Button("Fly to Thailand") {
                     showResults = false
                     nextPage()
                 }
