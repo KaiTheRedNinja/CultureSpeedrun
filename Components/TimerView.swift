@@ -30,7 +30,7 @@ struct TimerView: View {
                 .stroke(Color.gray, lineWidth: 15)
             Circle()
                 .trim(from: 0, to: 1-timeLeft/maxTime)
-                .stroke(color, style: StrokeStyle(
+                .stroke(color.opacity(pauseTime ? 0.5 : 1), style: StrokeStyle(
                     lineWidth: 15,
                     lineCap: .round
                 ))

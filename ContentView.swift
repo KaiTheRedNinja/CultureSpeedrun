@@ -3,12 +3,13 @@ import SwiftUI
 let timePerGame = 30.0
 
 enum Page {
-    case start, openCutscene, vietnam, china, bangkok, closeCutscene, scoresheet
+    case start, vietnam, china, bangkok, scoresheet
 }
 
 struct ContentView: View {
     @State var currentPage: Page = .start
     @State var showPlane: Bool = false
+    @State var showCutscene: Bool = false
     @State var airplaneX: CGFloat = 0
     @State var size: CGSize = .zero
 
@@ -52,17 +53,21 @@ struct ContentView: View {
         }
         .overlay {
             ZStack {
-                PlaneTrail()
-                    .fill(Color(uiColor: .systemBackground))
-                    .padding(.trailing, -size.width)
-                    .offset(x: airplaneX)
-                    .ignoresSafeArea()
-                Image(systemName: "airplane")
-                    .resizable()
-                    .frame(width: 220, height: 200)
-                    .matchedGeometryEffect(id: "plane", in: namespace, properties: .position)
-                    .offset(x: airplaneX)
+                ZStack {
+                    PlaneTrail()
+                        .fill(Color(uiColor: .systemBackground))
+                        .padding(.trailing, -size.width)
+                    Image(systemName: "airplane")
+                        .resizable()
+                        .frame(width: 220, height: 200)
+                        .matchedGeometryEffect(id: "plane", in: namespace, properties: .position)
+                }
+                .offset(x: airplaneX)
+
+                cutsceneContent
+                    .opacity(showCutscene ? 1 : 0)
             }
+            .ignoresSafeArea()
             .opacity(showPlane ? 1 : 0)
         }
         .background {
@@ -79,10 +84,6 @@ struct ContentView: View {
         switch currentPage {
         case .start:
             StartView(nextPage: nextPage)
-        case .openCutscene:
-            CutsceneView(nextPage: nextPage,
-                         conversation: ChatItem.openingConversation,
-                         endText: "Fly to Vietnam")
         case .vietnam:
             VietnamView(timeLeft: $timeLeft,
                         pauseTime: $pauseTime,
@@ -101,10 +102,6 @@ struct ContentView: View {
                         showTimeAndScore: $showTimeAndScore,
                         points: $thailandPoints,
                         nextPage: nextPage)
-        case .closeCutscene:
-            CutsceneView(nextPage: nextPage,
-                         conversation: ChatItem.closingConversation,
-                         endText: "Go to scoresheet")
         case .scoresheet:
             ScoresheetView(vietnamPoints: $vietnamPoints,
                            chinaPoints: $chinaPoints,
@@ -112,18 +109,40 @@ struct ContentView: View {
         }
     }
 
+    @ViewBuilder
+    var cutsceneContent: some View {
+        switch currentPage {
+        case .start:
+            CutsceneView(nextPage: finaliseSwitch,
+                         conversation: ChatItem.openingConversation,
+                         endText: "Fly to Vietnam 🇻🇳")
+        case .vietnam:
+            CutsceneView(nextPage: finaliseSwitch,
+                         conversation: [.init(sender: .boss, content: "Go to your next job")],
+                         endText: "Fly to Chengdu 🇨🇳")
+        case .china:
+            CutsceneView(nextPage: finaliseSwitch,
+                         conversation: [.init(sender: .boss, content: "Go to your next job")],
+                         endText: "Fly to Thailand 🇹🇭")
+        case .bangkok:
+            CutsceneView(nextPage: finaliseSwitch,
+                         conversation: ChatItem.closingConversation,
+                         endText: "Go to scoresheet")
+        default: Text("No cutscene")
+        }
+    }
+
     func nextPage() {
         switch currentPage {
-        case .start: switchTo(page: .openCutscene)
-        case .openCutscene: switchTo(page: .vietnam)
+        case .start: switchTo(page: .vietnam)
         case .vietnam: switchTo(page: .china)
         case .china: switchTo(page: .bangkok)
-        case .bangkok: switchTo(page: .closeCutscene)
-        case .closeCutscene: switchTo(page: .scoresheet)
+        case .bangkok: switchTo(page: .scoresheet)
         default: break // do nothing for the last page
         }
     }
 
+    @State var pageToSwitch: Page?
     func switchTo(page: Page) {
         let boundary = size.width/2 + 300
         airplaneX = -boundary
@@ -134,17 +153,30 @@ struct ContentView: View {
             showTimeAndScore = false
             timeLeft = timePerGame
             pauseTime = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) {
+            withAnimation {
+                showCutscene = true
+            }
+        }
+        pageToSwitch = page
+    }
 
+    func finaliseSwitch() {
+        let boundary = size.width/2 + 300
+        withAnimation(.linear(duration: 0.5)) {
+            showCutscene = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            currentPage = pageToSwitch!
+            pageToSwitch = nil
             withAnimation(.linear(duration: 3)) {
                 airplaneX = boundary*2
             }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) {
-            currentPage = page
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            withAnimation(.easeOut(duration: 0.5)) {
-                showPlane = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                withAnimation(.easeOut(duration: 0.5)) {
+                    showPlane = false
+                }
             }
         }
     }
