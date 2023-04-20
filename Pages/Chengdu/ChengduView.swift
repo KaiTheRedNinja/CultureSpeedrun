@@ -77,9 +77,8 @@ struct ChengduView: View {
                     .offset(x: roadDistance * CGFloat(roads.count+1))
             }
             .offset(x: -backgroundScroll)
-            Image(systemName: "circle.fill")
-                .resizable()
-                .scaledToFit()
+            Text("🐼")
+                .font(.system(size: 90))
                 .frame(width: 100, height: 100)
         }
         .padding(.leading, roadDistance/2)
