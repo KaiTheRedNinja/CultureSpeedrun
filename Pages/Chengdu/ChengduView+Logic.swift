@@ -29,7 +29,7 @@ extension ChengduView {
     }
 
     func movePlayer() {
-        guard !movingPlayer else { return }
+        guard !movingPlayer && !showingGuide && !showingGuide && !pauseTime else { return }
         movingPlayer = true
         let startTime = Date()
         let duration: Double = 0.5

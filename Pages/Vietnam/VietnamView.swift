@@ -108,35 +108,31 @@ struct VietnamView: View {
             .padding(20)
             HStack {
                 VStack {
-                    Button {
-                        showingGuide = true
-                    } label: {
-                        Image(systemName: showingGuide ? "play.fill" : "pause.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                    }
-                    .popover(isPresented: $showFood) {
-                        ZStack {
-                            switch displayedFood {
-                            case .included(let data):
-                                Color.green.opacity(0.5)
-                                VStack {
-                                    Text("Correct ingrident: " + data.name + "!").bold()
-                                    Text(data.description)
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40)
+                        .popover(isPresented: $showFood) {
+                            ZStack {
+                                switch displayedFood {
+                                case .included(let data):
+                                    Color.green.opacity(0.5)
+                                    VStack {
+                                        Text("Correct ingrident: " + data.name + "!").bold()
+                                        Text(data.description)
+                                    }
+                                case .excluded(let data):
+                                    Color.red.opacity(0.5)
+                                    VStack {
+                                        Text("Wrong ingredient: " + data.name).bold()
+                                        Text(data.description)
+                                    }
+                                case .none:
+                                    Text("none")
                                 }
-                            case .excluded(let data):
-                                Color.red.opacity(0.5)
-                                VStack {
-                                    Text("Wrong ingredient: " + data.name).bold()
-                                    Text(data.description)
-                                }
-                            case .none:
-                                Text("none")
                             }
+                            .frame(maxWidth: 300)
                         }
-                        .frame(maxWidth: 300)
-                    }
                     Spacer()
                 }
                 Spacer()

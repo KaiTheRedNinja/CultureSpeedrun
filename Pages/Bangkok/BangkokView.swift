@@ -114,6 +114,7 @@ struct BangkokView: View {
     }
 
     func nextTemple() {
+        pauseTime = false
         showTemple = false
         selectedOption = nil
         templeIndex += 1
@@ -179,6 +180,7 @@ struct BangkokView: View {
                             wrongQuestions += 1
                             points += 3
                         }
+                        pauseTime = true
                     } label: {
                         ZStack {
                             if let selectedOption {

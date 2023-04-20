@@ -38,21 +38,21 @@ struct ScoresheetView: View {
 
             Section("Game points") {
                 HStack {
-                    Text("Vietnam Bun Chua Challenge Points:")
+                    Text("🇻🇳 Bun Chua Challenge Points:")
                     Spacer()
                     Text("\(vietnamPoints)")
                 }
                 .font(.title2)
                 HStack {
-                    Text("China Panda Dash Points:")
+                    Text("🇨🇳 Panda Dash Points:")
                     Spacer()
-                    Text("\(vietnamPoints)")
+                    Text("\(chinaPoints)")
                 }
                 .font(.title2)
                 HStack {
-                    Text("Thailand Temple Run Points:")
+                    Text("🇹🇭 Temple Run Points:")
                     Spacer()
-                    Text("\(vietnamPoints)")
+                    Text("\(thailandPoints)")
                 }
                 .font(.title2)
 
